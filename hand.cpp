@@ -39,7 +39,25 @@ void Hand::bid(int nBid)
 {
   this.nBid = nBid;
 }  
-  
+
+bool Hand::isValidPlay(char ledSuit, int cardNum)
+{
+  if (startSuit == 0) //If this is the first play of the round, any play is valid
+    return true;
+
+  if (startSuit == cards->at(cardNum).suit) //If following suit, valid
+    return true;
+
+  bool hasLedSuit = false;
+  for (int i = 0; i < cards->size(); i++)
+    {
+      if (cards->at(i).suit == startSuit)
+	hasLedSuit = true;
+    }
+
+  return !hasLedSuit; //If have the suit that was led, must play a card of that suit
+}
+
 Card Hand::play(int cardNum)
 {
   Card card = cards->at(cardNum); 

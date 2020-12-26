@@ -17,6 +17,7 @@ class Hand
   ~Hand();
   void add(Card card); //Add a new card to the hand
   void bid(int nBid);
+  bool isValidPlay(char startSuit, int cardNum); //Check if card is a valid play
   Card play(int cardNum); //Remove card from the hand and return a copy of it
   void won(bool trickWon);
   int calcScore();
